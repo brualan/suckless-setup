@@ -57,6 +57,8 @@ static const Layout layouts[] = {
 
 static const char *upvol[]   = { "amixer", "-D", "pulse", "sset", "Master", "Playback", "Volume", "5%+",          NULL };
 static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "Playback", "Volume", "5%-",          NULL };
+static const char *downbrightness[] = { "/home/brualan/utils/monitors/lower_brightness", NULL };
+static const char *upbrightness[] = { "/home/brualan/utils/monitors/higher_brightness", NULL };
 //static const char *mutevol[] = { "amixer", "-D", "pulse", "sset", "Master", "Playback", "Volume", "1+", "toggle", NULL };
 
 
@@ -107,6 +109,8 @@ static Key keys[] = {
 	
 	{ MODKEY,			XK_Up,     spawn,	   {.v = upvol } },
 	{ MODKEY,			XK_Down,   spawn,	   {.v = downvol } },
+	{ MODKEY,			XK_Left,   spawn,	   {.v = downbrightness } },
+	{ MODKEY,			XK_Right,   spawn,	   {.v = upbrightness } },
 };
 
 /* button definitions */
