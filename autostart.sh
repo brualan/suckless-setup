@@ -22,7 +22,7 @@ while sleep 1; do
 	DATETIME=`date +"%a %b%_d %H:%M"`
 	BATTERYSTATE=`for x in /sys/class/power_supply/BAT?/capacity; do cat $x; done`
 	BATTERY_LEFT=`upower -i $BATTERY_DEVICE | grep time | sed 's/[^0-9]*//'`
-	VOLUME=`pactl list sinks | egrep "(Громкость|Volume)" | awk '{print "Vol:" $5}'`
+	VOLUME=`pactl list sinks | egrep "^\s*(Громкость|Volume)" | awk '{print "Vol:" $5}'`
 
 	NEW_STATUSBAR=" Bat: $BATTERYSTATE% (left: $BATTERY_LEFT) || $VOLUME || $DATETIME"
 
