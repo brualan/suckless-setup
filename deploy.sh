@@ -11,6 +11,7 @@ for f in *.tar.gz; do tar -xzf "$f"; done
 
 # st
 cd st-0.8.2 && \
+cp -t st-0.8.2 st-config/* && \
 sudo make install && \
 cd .. && \
 
@@ -28,6 +29,7 @@ chmod +x ~/.dwm/autostart.sh
 # slock
 cp -t slock-1.4 slock-config/* && \
 cd slock-1.4 && \
+patch -p1 < slock-dpms-20170923-fa11589.diff
 sudo make install && \
 cd .. && \
 
