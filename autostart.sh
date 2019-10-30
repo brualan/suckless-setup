@@ -12,9 +12,6 @@ xinput set-prop $ID $TAPING_ID 1
 xinput set-prop $ID $NATURAL_SCROLLING_ID 1
 xinput set-prop $ID $MIDDLE_CLICK_ID 1
 
-# autoconnect to external monitor if present
-[ `hostname` = "Aspire-E5-571" ] && /home/$USER/utils/monitors/autochoose
-
 OLD_STATUSBAR=""
 BATTERY_DEVICE=`upower -e | grep BAT`
 
