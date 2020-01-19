@@ -10,8 +10,8 @@ curl -O http://dl.suckless.org/st/st-0.8.2.tar.gz \
 for f in *.tar.gz; do tar -xzf "$f"; done
 
 # st
-cd st-0.8.2 && \
 cp -t st-0.8.2 st-config/* && \
+cd st-0.8.2 && \
 sudo make install && \
 cd .. && \
 
