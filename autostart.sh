@@ -1,5 +1,7 @@
 #!/bin/sh
 
+$HOME/utils/monitors/autochoose
+
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 ID=`xinput list | awk '/Touchpad/ {print substr($6,4)}'`
