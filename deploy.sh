@@ -24,7 +24,10 @@ cd .. && \
 sudo cp -v dwm.desktop /usr/share/xsessions
 mkdir -p ~/.dwm && \
 cp autostart.sh ~/.dwm/autostart.sh && \
-chmod +x ~/.dwm/autostart.sh
+chmod +x ~/.dwm/autostart.sh && \
+cp dwm-config/brightness.service /etc/systemd/system/ && \
+sudo systemctl daemon-reload && \
+sudo systemctl enable brightness.service
 
 # slock
 cp -t slock-1.4 slock-config/* && \

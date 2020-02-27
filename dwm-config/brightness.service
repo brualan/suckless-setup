@@ -1,0 +1,8 @@
+[Unit]
+Description=Allowing brightness control
+
+[Service]
+ExecStart=/home/brualan/utils/monitors/allow-brightness-control
+
+[Install]
+WantedBy=multi-user.target
