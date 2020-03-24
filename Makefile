@@ -20,10 +20,10 @@ dmenu-4.9: dmenu-4.9.tar.gz
 	tar -xzf dmenu-4.9.tar.gz
 
 install-st: st-0.8.2
-	cp -t st-0.8.2 st-config/*
+	cp -t st-0.8.2 st-config/config.h
 	make -C st-0.8.2 install
 install-dwm: dwm-6.2
-	cp -t dwm-6.2 dwm-config/*
+	cp -t dwm-6.2 dwm-config/config.h
 	patch -d dwm-6.2 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
 	make -C dwm-6.2 install
 	sudo cp -v dwm.desktop /usr/share/xsessions
@@ -34,7 +34,7 @@ install-dwm: dwm-6.2
 	systemctl daemon-reload
 	systemctl enable brightness.service
 install-slock: slock-1.4
-	cp -t slock-1.4 slock-config/*
+	cp -t slock-1.4 slock-config/config.h
 	patch -d slock-1.4 -p1 < slock-config/slock-dpms-20170923-fa11589.diff
 	make -C slock-1.4 install
 install-dmenu: dmenu-4.9
