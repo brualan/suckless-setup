@@ -26,9 +26,9 @@ install-dwm: dwm-6.2
 	cp -t dwm-6.2 dwm-config/config.h
 	patch -d dwm-6.2 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
 	make -C dwm-6.2 install
-	sudo cp -v dwm.desktop /usr/share/xsessions
+	sudo cp -v dwm-config/dwm.desktop /usr/share/xsessions
 	mkdir -p ~/.dwm
-	cp autostart.sh ~/.dwm/autostart.sh
+	cp dwm-config/autostart.sh ~/.dwm/autostart.sh
 	chmod +x ~/.dwm/autostart.sh
 	cp dwm-config/brightness.service /etc/systemd/system/
 	systemctl daemon-reload
