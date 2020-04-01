@@ -21,8 +21,9 @@ while sleep 1; do
 	BATTERYSTATE=`for x in /sys/class/power_supply/BAT?/capacity; do cat $x; done`
 	VOLUME=`pactl list sinks | awk '/^\s*(Громкость|Volume)/ {print "Vol:" $5}'`
 	WIFI_NAME=`iwgetid -r`
+	FREE_MEM=`free | mawk '/^Mem/ { if ($7 < 700000) { print " !!! LOW MEMORY !!! ||" } else { print "" } }'`
 
-	NEW_STATUSBAR=" ⚡ $BATTERYSTATE% || wifi: $WIFI_NAME || $VOLUME || $DATETIME"
+	NEW_STATUSBAR="$FREE_MEM ⚡ $BATTERYSTATE% || wifi: $WIFI_NAME || $VOLUME || $DATETIME"
 
 	if [ "$NEW_STATUSBAR" != "$OLD_STATUSBAR" ]; then
 		OLD_STATUSBAR=$NEW_STATUSBAR 
