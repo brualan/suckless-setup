@@ -19,7 +19,7 @@ OLD_STATUSBAR=""
 while sleep 1; do
 	DATETIME=`date +"%a %b %_d %H:%M"`
 	BATTERYSTATE=`for x in /sys/class/power_supply/BAT?/capacity; do cat $x; done`
-	VOLUME=`pactl list sinks | mawk '/^\s*(Громкость|Volume)/ {print "Vol:" $5}'`
+	VOLUME=`pactl list sinks | mawk '/^\t*(Громкость|Volume)/ {print "Vol:" $5}'`
 	WIFI_NAME=`iwgetid -r`
 	FREE_MEM=`free | mawk '/^Mem/ { if ($7 < 700000) { print " !!! LOW MEMORY !!! ||" } else { print "" } }'`
 
