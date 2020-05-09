@@ -1,8 +1,8 @@
 dependencies:
 	apt update
 	apt install -y build-essential libx11-dev libxft-dev libxrandr-dev libxinerama-dev git curl
-st-0.8.2.tar.gz:
-	curl -O http://dl.suckless.org/st/st-0.8.2.tar.gz
+st-0.8.3.tar.gz:
+	curl -O http://dl.suckless.org/st/st-0.8.3.tar.gz
 dwm-6.2.tar.gz:
 	curl -O http://dl.suckless.org/dwm/dwm-6.2.tar.gz
 slock-1.4.tar.gz:
@@ -10,8 +10,8 @@ slock-1.4.tar.gz:
 dmenu-4.9.tar.gz:
 	curl -O http://dl.suckless.org/tools/dmenu-4.9.tar.gz
 
-st-0.8.2: st-0.8.2.tar.gz
-	tar -xzf st-0.8.2.tar.gz
+st-0.8.3: st-0.8.3.tar.gz
+	tar -xzf st-0.8.3.tar.gz
 dwm-6.2: dwm-6.2.tar.gz
 	tar -xzf dwm-6.2.tar.gz
 slock-1.4: slock-1.4.tar.gz
@@ -19,9 +19,9 @@ slock-1.4: slock-1.4.tar.gz
 dmenu-4.9: dmenu-4.9.tar.gz
 	tar -xzf dmenu-4.9.tar.gz
 
-install-st: st-0.8.2
-	cp -t st-0.8.2 st-config/config.h
-	make -C st-0.8.2 install
+install-st: st-0.8.3
+	cp -t st-0.8.3 st-config/config.h
+	make -C st-0.8.3 install
 install-dwm: dwm-6.2
 	cp -t dwm-6.2 dwm-config/config.h
 	patch -d dwm-6.2 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
@@ -43,5 +43,5 @@ install-dmenu: dmenu-4.9
 install-all: dependencies install-st install-dwm install-slock install-dmenu
 
 clean:
-	rm -rf st-0.8.2 dmenu-4.9 slock-1.4 dwm-6.2 *tar.gz
+	rm -rf st-0.8.3 dmenu-4.9 slock-1.4 dwm-6.2 *tar.gz
 
