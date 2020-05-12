@@ -1,7 +1,6 @@
 USER_HOME := $(shell echo ~$(SUDO_USER))
 SRC_TEMP := $(shell mktemp -d)
 
-
 software:
 	apt update
 	apt install -y sxiv htop tmux sysstat nload pass curl git mpv ffmpeg restic rsync imagemagick webp jq jdupes zathura zathura-djvu zathura-pdf-poppler zathura-ps entr deborphan
@@ -10,7 +9,6 @@ software:
 build-dependencies:
 	apt update
 	apt install -y build-essential libx11-dev libxft-dev libxrandr-dev libxinerama-dev git curl
-
 
 st-0.8.3.tar.gz:
 	curl --silent -O http://dl.suckless.org/st/st-0.8.3.tar.gz
@@ -51,10 +49,8 @@ install-slock: slock-1.4
 install-dmenu: dmenu-4.9
 	make -C $(SRC_TEMP)/dmenu-4.9 install
 
-install-all: software build-dependencies install-st install-dwm install-slock install-dmenu font nvim terminal fzf utils
 
-clean:
-	rm -rf st-0.8.3 dmenu-4.9 slock-1.4 dwm-6.2 *tar.gz
+install-all: software build-dependencies install-st install-dwm install-slock install-dmenu font nvim terminal fzf utils golang telegram
 
 
 font:
@@ -85,4 +81,9 @@ golang:
 	$(eval TMP_FILE := $(shell mktemp))
 	curl -o $(TMP_FILE) -L `curl --silent https://golang.org/dl/ | grep -oP 'https:\/\/dl\.google\.com\/go\/go([0-9\.]+)\.linux-amd64\.tar\.gz' | head -n 1`
 	tar -C /usr/local -xzf $(TMP_FILE)
-	grep 'export PATH=$$PATH:/usr/local/go/bin' $(USER_HOME)/.profile
+	grep 'export PATH=$(PATH):/usr/local/go/bin' $(USER_HOME)/.profile || echo 'export PATH=$(PATH):/usr/local/go/bin' >> $(USER_HOME)/.profile
+telegram:
+	$(eval TMP_FILE := $(shell mktemp))
+	curl -o $(TMP_FILE) -L `curl --silent "https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest" | grep '"browser_download_url":' | sed -E 's/.*"([^"]+)".*/\1/' | grep 'tsetup\..*.tar.xz'`
+	tar xf $(TMP_FILE) -C /tmp --no-anchored Telegram/Telegram --strip-components=1
+	mv /tmp/Telegram /usr/local/bin/telegram
