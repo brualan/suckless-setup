@@ -17,7 +17,7 @@ dwm-6.2.tar.gz:
 slock-1.4.tar.gz:
 	curl --silent -O http://dl.suckless.org/tools/slock-1.4.tar.gz
 dmenu-4.9.tar.gz:
-	curl --silent -O http://dl.suckless.org/tools/dmenu-4.9.tar.gz
+	#curl --silent -O http://dl.suckless.org/tools/dmenu-4.9.tar.gz
 
 st-0.8.3: st-0.8.3.tar.gz
 	tar -xzf st-0.8.3.tar.gz -C $(SRC_TEMP)
@@ -25,8 +25,9 @@ dwm-6.2: dwm-6.2.tar.gz
 	tar -xzf dwm-6.2.tar.gz -C $(SRC_TEMP)
 slock-1.4: slock-1.4.tar.gz
 	tar -xzf slock-1.4.tar.gz -C $(SRC_TEMP)
-dmenu-4.9: dmenu-4.9.tar.gz
-	tar -xzf dmenu-4.9.tar.gz -C $(SRC_TEMP)
+dmenu-4.9: # dmenu-4.9.tar.gz
+	git clone git://git.suckless.org/dmenu "$(SRC_TEMP)/dmenu-4.9"
+	#tar -xzf dmenu-4.9.tar.gz -C $(SRC_TEMP)
 
 install-st: st-0.8.3
 	cp -t $(SRC_TEMP)/st-0.8.3 st-config/config.h
