@@ -1,0 +1,45 @@
+# fd - cd to selected directory
+d() {
+	local dir
+	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && \
+	cd "$dir"
+}
+
+# cf - fuzzy cd from anywhere
+# ex: cf word1 word2 ... (even part of a file name)
+# zsh autoload function
+cf() {
+  local file
+
+  file="$(locate -Ai -0 $HOME | grep -z -vE '~$' | fzf --read0 -0 -1)"
+
+  if [[ -n $file ]]
+  then
+     if [[ -d $file ]]
+     then
+        cd -- $file && ls
+     else
+        cd -- ${file:h} && ls
+     fi
+  fi
+}
+
+alias \
+	ls='ls -vhN --color=auto --group-directories-first' \
+	ll='ls -valF' \
+	la='ls -vA' \
+	l='ls' \
+	lss='du -csh .[!.]* * 2> /dev/null | sort -h' \
+	grep='grep --color=auto' \
+	fgrep='fgrep --color=auto' \
+	egrep='egrep --color=auto' \
+	diff='diff --color=auto' \
+	ffmpeg='ffmpeg -hide_banner' \
+	vim='nvim' \
+	f="$FILE" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	r="$READER" \
+	u="find ~/utils -type f -executable -not -path '*/\.*' | sed 's/^.*utils\///g' | fzf | xargs -I \"{}\" sh -c \"~/utils/{}\"" \
+	libreoffice="libreoffice --norestore" \
+	findnothidden="find -not -path '*/\.*'"

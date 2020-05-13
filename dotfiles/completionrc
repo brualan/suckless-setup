@@ -1,0 +1,13 @@
+_mountComplete()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(ls /dev/disk/by-label)" -- $cur) )
+}
+complete -F _mountComplete utils/mount
+
+_unmountComplete()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(ls /media/$(whoami)/)" -- $cur) )
+}
+complete -F _unmountComplete utils/unmount
