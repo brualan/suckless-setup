@@ -18,3 +18,15 @@ set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячс�
 
 
 map <F6> :setlocal spell! spelllang=ru<CR>
+
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+call plug#end()
