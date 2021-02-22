@@ -56,8 +56,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-static const char *upvol[]   = { "amixer", "-D", "pulse", "sset", "Master", "Playback", "Volume", "5%+",          NULL };
-static const char *downvol[] = { "amixer", "-D", "pulse", "sset", "Master", "Playback", "Volume", "5%-",          NULL };
+static const char *upvol[]   = { "amixer", "set", "Master", "5%+", NULL };
+static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL };
 static const char *downbrightness[] = { "/home/brualan/utils/monitors/lower_brightness", NULL };
 static const char *upbrightness[] = { "/home/brualan/utils/monitors/higher_brightness", NULL };
 static const char *screenshot[] = { "/home/brualan/utils/images/screenshot-to-clipboard", NULL };
@@ -87,7 +87,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
