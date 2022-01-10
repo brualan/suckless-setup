@@ -59,6 +59,9 @@ install-slock: slock-1.4
 install-dmenu: dmenu-4.9
 	make -C $(SRC_TEMP)/dmenu-4.9 install
 
+install-keyboad-conf:
+	sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/00-keyboard.conf
+
 
 install-all: software install-st install-dwm install-slock install-dmenu font terminal utils
 
