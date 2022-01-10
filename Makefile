@@ -2,12 +2,22 @@ USER_HOME := $(shell echo ~$(SUDO_USER))
 SRC_TEMP := $(shell mktemp -d)
 
 software:
-	pacman -Syu --noconfirm
-	pacman -Syu --noconfirm go sxiv htop tmux sysstat nload pass curl git mpv ffmpeg restic rsync imagemagick jq zathura zathura-djvu zathura-pdf-poppler zathura-ps entr unzip base-devel libx11 libxft libxrandr libxinerama git curl firefox telegram-desktop fzf bash-completion
+	pacman -Sy --needed --noconfirm go sxiv htop tmux sysstat nload pass curl git mpv ffmpeg restic rsync imagemagick jq zathura zathura-djvu zathura-pdf-poppler zathura-ps entr unzip base-devel libx11 libxft libxrandr libxinerama git curl firefox bash-completion
 	mkdir -p $(USER_HOME)/.config/zathura
 	cp dotfiles/zathurarc $(USER_HOME)/.config/zathura/zathurarc
+
+nvim-config:
+	sudo pacman -Sy --needed --noconfirm neovim git go # check that we have needed deps
+	rm -rf $(USER_HOME)/.config/nvim # cleanup any previous configs
 	mkdir -p $(USER_HOME)/.config/nvim
 	cp neovim/init.vim $(USER_HOME)/.config/nvim/init.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git $(USER_HOME)/.config/nvim/bundle/Vundle.vim
+	nvim +'PluginInstall' +'GoInstallBinaries'  +qa
+	@echo -------------
+	@echo
+	@echo Don\'t forget to manualy run \':COQdeps\' and \':COQnow\' in NeoVim
+	@echo
+	@echo -------------
 
 st-0.8.4.tar.gz:
 	curl --silent -O http://dl.suckless.org/st/st-0.8.4.tar.gz
