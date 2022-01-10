@@ -44,14 +44,14 @@ install-st: st-0.8.4
 install-dwm: dwm-6.2
 	cp -t $(SRC_TEMP)/dwm-6.2 dwm-config/config.h
 	patch -d $(SRC_TEMP)/dwm-6.2 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
-	make -C $(SRC_TEMP)/dwm-6.2 install
-	cp -v dwm-config/dwm.desktop /usr/share/xsessions
-	mkdir -p $(USER_HOME)/.dwm
-	cp dwm-config/autostart.sh $(USER_HOME)/.dwm/autostart.sh
-	chmod +x $(USER_HOME)/.dwm/autostart.sh
-	cp dwm-config/brightness.service /etc/systemd/system/
-	systemctl daemon-reload
-	systemctl enable brightness.service
+	sudo make -C $(SRC_TEMP)/dwm-6.2 install
+	sudo cp -v dwm-config/dwm.desktop /usr/share/xsessions
+	mkdir -p $(USER_HOME)/.config/dwm
+	cp dwm-config/autostart.sh $(USER_HOME)/.config/dwm/autostart.sh
+	chmod +x $(USER_HOME)/.config/dwm/autostart.sh
+	sudo cp dwm-config/brightness.service /etc/systemd/system/
+	sudo systemctl daemon-reload
+	sudo systemctl enable brightness.service
 install-slock: slock-1.4
 	cp -t $(SRC_TEMP)/slock-1.4 slock-config/config.h
 	patch -d $(SRC_TEMP)/slock-1.4 -p1 < slock-config/slock-dpms-20170923-fa11589.diff
