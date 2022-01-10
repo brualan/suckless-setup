@@ -16,4 +16,7 @@ xinput set-prop $ID $MIDDLE_CLICK_ID 1
 
 OLD_STATUSBAR=""
 
+# faster key repetion
+xset r rate 300 50
+
 ophelia
