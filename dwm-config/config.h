@@ -38,6 +38,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -56,8 +57,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-static const char *upvol[]   = { "amixer", "set", "Master", "5%+", NULL };
-static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL };
+static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *downbrightness[] = { "/home/brualan/utils/monitors/lower_brightness", NULL };
 static const char *upbrightness[] = { "/home/brualan/utils/monitors/higher_brightness", NULL };
 static const char *screenshot[] = { "/home/brualan/utils/images/screenshot-to-clipboard", NULL };

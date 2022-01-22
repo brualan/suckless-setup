@@ -21,8 +21,8 @@ nvim-config:
 
 st-0.8.4.tar.gz:
 	curl --silent -O http://dl.suckless.org/st/st-0.8.4.tar.gz
-dwm-6.2.tar.gz:
-	curl --silent -O http://dl.suckless.org/dwm/dwm-6.2.tar.gz
+dwm-6.3.tar.gz:
+	curl --silent -O http://dl.suckless.org/dwm/dwm-6.3.tar.gz
 slock-1.4.tar.gz:
 	curl --silent -O http://dl.suckless.org/tools/slock-1.4.tar.gz
 dmenu-4.9.tar.gz:
@@ -30,8 +30,8 @@ dmenu-4.9.tar.gz:
 
 st-0.8.4: st-0.8.4.tar.gz
 	tar -xzf st-0.8.4.tar.gz -C $(SRC_TEMP)
-dwm-6.2: dwm-6.2.tar.gz
-	tar -xzf dwm-6.2.tar.gz -C $(SRC_TEMP)
+dwm-6.3: dwm-6.3.tar.gz
+	tar -xzf dwm-6.3.tar.gz -C $(SRC_TEMP)
 slock-1.4: slock-1.4.tar.gz
 	tar -xzf slock-1.4.tar.gz -C $(SRC_TEMP)
 dmenu-4.9: # dmenu-4.9.tar.gz
@@ -41,10 +41,10 @@ dmenu-4.9: # dmenu-4.9.tar.gz
 install-st: st-0.8.4
 	cp -t $(SRC_TEMP)/st-0.8.4 st-config/config.h
 	make -C $(SRC_TEMP)/st-0.8.4 install
-install-dwm: dwm-6.2
-	cp -t $(SRC_TEMP)/dwm-6.2 dwm-config/config.h
-	patch -d $(SRC_TEMP)/dwm-6.2 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
-	sudo make -C $(SRC_TEMP)/dwm-6.2 install
+install-dwm: dwm-6.3
+	cp -t $(SRC_TEMP)/dwm-6.3 dwm-config/config.h
+	patch -d $(SRC_TEMP)/dwm-6.3 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
+	sudo make -C $(SRC_TEMP)/dwm-6.3 install
 	sudo cp -v dwm-config/dwm.desktop /usr/share/xsessions
 	mkdir -p $(USER_HOME)/.config/dwm
 	cp dwm-config/autostart.sh $(USER_HOME)/.config/dwm/autostart.sh
