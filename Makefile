@@ -19,8 +19,8 @@ nvim-config:
 	@echo
 	@echo -------------
 
-st-0.8.4.tar.gz:
-	curl --silent -O http://dl.suckless.org/st/st-0.8.4.tar.gz
+st-0.8.5.tar.gz:
+	curl --silent -O http://dl.suckless.org/st/st-0.8.5.tar.gz
 dwm-6.3.tar.gz:
 	curl --silent -O http://dl.suckless.org/dwm/dwm-6.3.tar.gz
 slock-1.4.tar.gz:
@@ -28,8 +28,8 @@ slock-1.4.tar.gz:
 dmenu-4.9.tar.gz:
 	#curl --silent -O http://dl.suckless.org/tools/dmenu-4.9.tar.gz
 
-st-0.8.4: st-0.8.4.tar.gz
-	tar -xzf st-0.8.4.tar.gz -C $(SRC_TEMP)
+st-0.8.5: st-0.8.5.tar.gz
+	tar -xzf st-0.8.5.tar.gz -C $(SRC_TEMP)
 dwm-6.3: dwm-6.3.tar.gz
 	tar -xzf dwm-6.3.tar.gz -C $(SRC_TEMP)
 slock-1.4: slock-1.4.tar.gz
@@ -38,9 +38,9 @@ dmenu-4.9: # dmenu-4.9.tar.gz
 	git clone git://git.suckless.org/dmenu "$(SRC_TEMP)/dmenu-4.9"
 	#tar -xzf dmenu-4.9.tar.gz -C $(SRC_TEMP)
 
-install-st: st-0.8.4
-	cp -t $(SRC_TEMP)/st-0.8.4 st-config/config.h
-	make -C $(SRC_TEMP)/st-0.8.4 install
+install-st: st-0.8.5
+	cp -t $(SRC_TEMP)/st-0.8.5 st-config/config.h
+	sudo make -C $(SRC_TEMP)/st-0.8.5 install
 install-dwm: dwm-6.3
 	cp -t $(SRC_TEMP)/dwm-6.3 dwm-config/config.h
 	patch -d $(SRC_TEMP)/dwm-6.3 -p1 < dwm-config/dwm-autostart-20161205-bb3bd6f.diff
