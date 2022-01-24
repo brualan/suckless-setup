@@ -33,7 +33,8 @@ call vundle#begin()
   Plugin 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
   " golang specific tools
-  Plugin 'fatih/vim-go'
+  Plugin 'fatih/vim-go' " language support
+  Plugin 'buoto/gotests-vim' " test generation
 call vundle#end()
 
 " start completion automaticaly
