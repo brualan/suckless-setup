@@ -74,10 +74,10 @@ font:
 	unzip $(TMP_FILE) -d $(USER_HOME)/.local/share/fonts/
 	fc-cache -f -v
 terminal:
-	rm -f $(USER_HOME)/.bashrc $(USER_HOME)/.profile $(USER_HOME)/.tmux.conf $(USER_HOME)/.config/user-dirs.dirs
+	rm -f $(USER_HOME)/.bashrc $(USER_HOME)/.profile $(USER_HOME)/.bash_profile $(USER_HOME)/.tmux.conf $(USER_HOME)/.config/user-dirs.dirs
 	cp -r dotfiles $(USER_HOME)/.config/
 	ln -s $(USER_HOME)/.config/dotfiles/bashrc $(USER_HOME)/.bashrc
-	ln -s $(USER_HOME)/.config/dotfiles/profile $(USER_HOME)/.profile
+	ln -s $(USER_HOME)/.config/dotfiles/bash_profile $(USER_HOME)/.bash_profile
 	ln -s $(USER_HOME)/.config/dotfiles/user-dirs.dirs $(USER_HOME)/.config/user-dirs.dirs
 	ln -s $(USER_HOME)/.config/dotfiles/tmux.conf $(USER_HOME)/.tmux.conf
 utils:
