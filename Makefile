@@ -2,9 +2,11 @@ USER_HOME := $(shell echo ~$(SUDO_USER))
 SRC_TEMP := $(shell mktemp -d)
 
 software:
-	pacman -Sy --needed --noconfirm go sxiv htop tmux sysstat nload pass curl git mpv ffmpeg restic rsync imagemagick jq zathura zathura-djvu zathura-pdf-poppler zathura-ps entr unzip base-devel libx11 libxft libxrandr libxinerama git curl firefox bash-completion
+	sudo pacman -Sy --needed --noconfirm go sxiv htop tmux sysstat nload pass curl git mpv ffmpeg restic rsync imagemagick jq zathura zathura-djvu zathura-pdf-poppler zathura-ps entr unzip base-devel libx11 libxft libxrandr libxinerama git curl firefox bash-completion yt-dlp
 	mkdir -p $(USER_HOME)/.config/zathura
+	mkdir -p $(USER_HOME)/.config/mpv
 	cp dotfiles/zathurarc $(USER_HOME)/.config/zathura/zathurarc
+	cp dotfiles/mpv.conf $(USER_HOME)/.config/mpv/mpv.conf
 
 nvim-config:
 	sudo pacman -Sy --needed --noconfirm neovim git go # check that we have needed deps
