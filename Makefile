@@ -15,11 +15,6 @@ nvim-config:
 	cp neovim/init.vim $(USER_HOME)/.config/nvim/init.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git $(USER_HOME)/.config/nvim/bundle/Vundle.vim
 	nvim +'PluginInstall' +'GoInstallBinaries'  +qa
-	@echo -------------
-	@echo
-	@echo Don\'t forget to manualy run \':COQdeps\' and \':COQnow\' in NeoVim
-	@echo
-	@echo -------------
 
 st-0.8.5.tar.gz:
 	curl --silent -O http://dl.suckless.org/st/st-0.8.5.tar.gz
