@@ -32,6 +32,11 @@ export FILE="lf"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export LESSHISTFILE="-" # no history file for less
 
+export DOCKER_CONFIG="$HOME/.config/docker"
+
+export CARGO_HOME="$HOME/.local/share/cargo"
+export RUSTUP_HOME="$HOME/.local/share/rustup"
+export GOPATH="$HOME/.local/share/go"
 
 
 
@@ -45,4 +50,4 @@ export LESS=' -R '
 # set caps lock as a secondary escape key
 setxkbmap -option caps:escape
 
-[[ ":$PATH:" != *":$HOME/.cargo/bin:$HOME/go/bin:/usr/local/go/bin:"* ]] && PATH="$HOME/.cargo/bin:$HOME/go/bin:/usr/local/go/bin:$PATH"
+[[ ":$PATH:" != *":$HOME/.cargo/bin:$GOPATH/bin:/usr/local/go/bin:"* ]] && PATH="$HOME/.cargo/bin:$GOPATH/bin:/usr/local/go/bin:$PATH"
