@@ -25,4 +25,9 @@ call vundle#begin()
   " golang specific tools
   Plugin 'fatih/vim-go' " language support
   Plugin 'buoto/gotests-vim' " test generation
+
+  Plugin 'github/copilot.vim'
+  let g:copilot_filetypes = {
+    \ 'markdown': v:true,
+  \}
 call vundle#end()
